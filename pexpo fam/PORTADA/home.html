@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="db.js" defer></script>
+</head>
+<body>
+  <script>
+    UsersDB.requireLogin();
+  </script>
+
+  <h2>Bienvenido</h2>
+  <p>Usuario: <span id="currentUser"></span></p>
+  <button onclick="UsersDB.logout()">Cerrar sesión</button>
+
+  <script>
+    document.getElementById("currentUser").textContent = UsersDB.currentUser();
+  </script>
+</body>
+</html>
+<footer class="footer">
+    <p>© 2025 M.A.I College | Creado por Valentina Amaya, Mariel Perez y Fabricio Rivera</p>
+    </footer>

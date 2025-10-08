@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.A.I College Calendario</title>
+    <link rel="stylesheet" href="calendario.css">
+</head>
+<body>
+    <header class="header">
+        <h1>M.A.I College Calendario</h1>
+        <div class="botones">
+            <button class="btn-ai" id="abrirChat">M.A.I College AI</button>
+            <a href="inicio.html" class="btn-inicio">Ir a Inicio</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="calendar-nav">
+            <button id="prevMonth">&lt;</button>
+            <h2 id="monthYear"></h2>
+            <button id="nextMonth">&gt;</button>
+        </div>
+
+        <table id="calendarioApp" class="calendar-table">
+            <thead>
+                <tr>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>M</th>
+                    <th>X</th>
+                    <th>J</th>
+                    <th>V</th>
+                    <th>S</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="calendar-legend">
+            <span class="legend start-class"></span> Clases normales
+            <span class="legend exam-academica"></span> Examen académico
+            <span class="legend exam-tecnica"></span> Examen técnico
+            <span class="legend holiday"></span> Feriado
+            <span class="legend free"></span> Día libre
+        </div>
+
+        <div id="infoDia">Seleccione un día para ver información.</div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 M.A.I College | Creado por Valentina Amaya, Mariel Perez y Fabricio Rivera</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="calendario.js"></script>
+
+    <!-- Script de Tidio -->
+    <script src="//code.tidio.co/pdbmoml13oibf61gutgerip3dwuww7pb.js" async></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const botonChat = document.getElementById("abrirChat");
+
+        // Ocultar el widget al inicio
+        function ocultarWidget() {
+            if (window.tidioChatApi) {
+                window.tidioChatApi.hide();
+            } else {
+                setTimeout(ocultarWidget, 500);
+            }
+        }
+        ocultarWidget();
+
+        // Mostrar el chat al hacer clic en el botón
+        botonChat.addEventListener("click", function () {
+            if (window.tidioChatApi) {
+                window.tidioChatApi.show();
+                window.tidioChatApi.open();
+            }
+        });
+    });
+
+    // Ejemplo de integración con Tidio para responder sobre un día específico
+    function responderDiaTidio(day, month, year) {
+        const calendarioTable = document.querySelector('#calendarioApp tbody');
+        const celdas = calendarioTable.querySelectorAll('td');
+        let respuesta = "No se encontró información para ese día.";
+
+        celdas.forEach(td => {
+            if (parseInt(td.textContent) === day) {
+                respuesta = td.textContent + ": " + td.getAttribute('data-texto');
+            }
+        });
+
+        if (window.tidioChatApi) {
+            window.tidioChatApi.push(['message', respuesta]);
+        }
+    }
+    </script>
+</body>
+</html>
+
+

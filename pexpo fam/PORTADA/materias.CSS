@@ -1,0 +1,177 @@
+/* === Reset y estilos base === */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #004e64, #00a5cf, #25a18e);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* === Header === */
+.header {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 15px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.header-botones {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Botones del header */
+.btn-ai, .btn-inicio {
+  background: #00a5cf;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid #000; /* borde negro */
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn-ai:hover, .btn-inicio:hover {
+  background: #25a18e;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #000;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* === Botones de materias en grilla 3x3 === */
+.nav-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto 40px auto;
+}
+
+.nav-btn {
+  background: #00a5cf;
+  color: #fff;
+  padding: 15px 0;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid #000; /* borde negro */
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* sombra de texto */
+}
+
+.nav-btn:hover {
+  background: #25a18e;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #000; /* efecto glow */
+}
+
+/* === Sección de contenido === */
+.content {
+  width: 90%;
+  max-width: 900px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Tarjeta materia */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background 0.3s ease;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.card h3 {
+  margin: 0 0 15px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #25a18e;
+  padding-bottom: 5px;
+}
+
+/* Inputs */
+input[type="file"] {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nav-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Footer === */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 15px 30px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #e0f7fa;
+}
+
+.footer a {
+  color: #00a5cf;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #25a18e;
+}

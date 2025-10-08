@@ -1,0 +1,169 @@
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #004e64, #00a5cf, #25a18e);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    flex-direction: column; /* Poner los botones debajo del título */
+    align-items: center;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 20px 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    gap: 15px; /* Espacio entre título y botones */
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+}
+
+/* Contenedor de botones dentro del header */
+.botones-header {
+    display: flex;
+    flex-direction: column; /* Se apilan verticalmente */
+    align-items: center;
+    gap: 10px; /* Separación entre botones */
+}
+
+/*BOTÓN PRINCIPAL M.A.I College AI*/
+.btn-ai {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #00a5cf;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ai:hover {
+    background: #25a18e;
+    transform: scale(1.05);
+}
+
+.btn-ai svg {
+    fill: #fff;
+}
+
+/* ============================
+   BOTÓN DE REDIRECCIÓN A INICIO
+============================ */
+.btn-inicio {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #9fffcb; /* Color verde claro */
+    color: #004e64;      /* Texto oscuro */
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none; /* Sin subrayado */
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-inicio:hover {
+    background: #7ae582; /* Hover más oscuro */
+    transform: scale(1.05);
+}
+
+/* ============================
+   CONTENEDOR PRINCIPAL GRID 3x3
+============================ */
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 25px;
+    padding: 40px;
+    justify-items: center;
+}
+
+/* ============================
+   TARJETAS
+============================ */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Contenido de las tarjetas */
+.card .title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Botón de ver calificación dentro de la tarjeta */
+.card button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #007ea7; /* Color azul */
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card button:hover {
+    background: #00a5cf; /* Hover más claro */
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #007ea7; /* Brillo */
+}
+/* === Footer === */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 15px 30px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #e0f7fa;
+}
+
+.footer a {
+    color: #00a5cf;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #25a18e;
+}

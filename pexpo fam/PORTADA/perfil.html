@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.A.I College Perfil</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+   <header class="header">
+        <h1>M.A.I College perfil</h1>
+        <div class="botones">
+            <button class="btn-ai">M.A.I College AI</button>
+            <a href="inicio.html" class="btn-inicio">Ir a Inicio</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="card">
+            <h3>Formulario de Usuario</h3>
+            <form id="perfilForm">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <select id="grado" required>
+                    <option value="">Seleccione grado</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+
+                <select id="grupo" required>
+                    <option value="">Seleccione grupo</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+
+                <input type="date" id="fechaNacimiento" required>
+                <input type="file" id="fotoPerfil" accept="image/*">
+
+                <button type="submit" class="nav-btn">Guardar Perfil</button>
+            </form>
+        </div>
+
+        <div class="card" id="vistaPerfil" style="display:none;">
+            <h3>Vista Previa del Perfil</h3>
+            <img id="imgPerfil" src="" alt="Foto de Perfil" style="width:120px; border-radius:50%; margin-bottom:10px;">
+            <p><strong>Nombre:</strong> <span id="mostrarNombre"></span></p>
+            <p><strong>Sección:</strong> <span id="mostrarSeccion"></span></p>
+            <p><strong>Grupo:</strong> <span id="mostrarGrupo"></span></p>
+            <p><strong>Fecha de Nacimiento:</strong> <span id="mostrarFecha"></span></p>
+        </div>
+    </div>
+
+    <script src="perfil.js"></script>
+    <footer class="footer">
+    <p>© 2025 M.A.I College | Creado por Valentina Amaya, Mariel Perez y Fabricio Rivera</p>
+    </footer>
+</body>
+</html>

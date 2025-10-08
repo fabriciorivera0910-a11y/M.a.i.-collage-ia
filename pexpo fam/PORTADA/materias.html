@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M.A.I College Materias</title>
+  <style>
+    /* === Reset y estilos base === */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #004e64, #00a5cf, #25a18e);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* === Header === */
+    .header {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 15px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+
+    .header-botones {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Botones del header */
+    .btn-ai, .btn-inicio {
+      background: #00a5cf;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 3px solid #000;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .btn-ai:hover, .btn-inicio:hover {
+      background: #25a18e;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #000;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* === Botones de materias en grilla 3x3 === */
+    .nav-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 90%;
+      max-width: 900px;
+      margin: 20px auto 40px auto;
+    }
+
+    .nav-btn {
+      background: #00a5cf;
+      color: #fff;
+      padding: 15px 0;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 3px solid #000;
+      font-size: 1rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .nav-btn:hover {
+      background: #25a18e;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #000;
+    }
+
+    /* === Sección de contenido === */
+    .content {
+      width: 90%;
+      max-width: 900px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Tarjeta materia */
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, background 0.3s ease;
+      width: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .card h2, .card h3 {
+      margin: 0 0 15px;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #25a18e;
+      padding-bottom: 5px;
+    }
+
+    /* Área de subida de archivos mejorada */
+    .agregar-archivo {
+      margin-top: 30px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      border: 3px dashed #00a5cf;
+      transition: all 0.3s ease;
+    }
+
+    .agregar-archivo:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #25a18e;
+    }
+
+    .file-input-wrapper {
+      display: inline-block;
+      margin: 10px 0;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 15px auto;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #004e64;
+      border: 3px solid #000;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    input[type="file"]:hover {
+      background: #fff;
+      transform: scale(1.02);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    input[type="file"]::file-selector-button {
+      background: #00a5cf;
+      color: #fff;
+      padding: 10px 20px;
+      border: 2px solid #000;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+      background: #25a18e;
+      transform: scale(1.05);
+    }
+
+    .agregar-archivo button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      background: #25a18e;
+      color: #fff;
+      border: 3px solid #000;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .agregar-archivo button:hover {
+      background: #00a5cf;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #000;
+    }
+
+    /* Lista de archivos */
+    #archivos-lista {
+      margin: 20px 0;
+    }
+
+    #archivos-lista ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #archivos-lista li {
+      background: rgba(255, 255, 255, 0.15);
+      margin: 10px 0;
+      padding: 15px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    #archivos-lista li:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateX(5px);
+      border-color: #00a5cf;
+    }
+
+    #archivos-lista a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      flex: 1;
+      text-align: left;
+      padding-left: 10px;
+      transition: color 0.3s ease;
+    }
+
+    #archivos-lista a:hover {
+      color: #00a5cf;
+    }
+
+    #archivos-lista button {
+      background: #ff4444;
+      color: #fff;
+      border: 2px solid #000;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    #archivos-lista button:hover {
+      background: #cc0000;
+      transform: scale(1.1);
+      box-shadow: 0 0 8px #000;
+    }
+
+    #archivos-lista p {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      font-style: italic;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .nav-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* === Footer === */
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 15px 30px;
+      box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+      margin-top: auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #e0f7fa;
+    }
+
+    .footer a {
+      color: #00a5cf;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #25a18e;
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado -->
+  <header class="header">
+    <h1>M.A.I College Materias</h1>
+    <div class="header-botones">
+      <button class="btn-ai">M.A.I College AI</button>
+      <a href="inicio.html" class="btn-inicio">Ir a Inicio</a>
+    </div>
+  </header>
+
+  <!-- Contenido dinámico -->
+  <div id="contenido" class="content">
+    <div class="card">
+      <h3>Seleccione una materia para ver y subir archivos</h3>
+    </div>
+  </div>
+
+  <!-- Navegación de materias -->
+  <div class="nav-container">
+    <button class="nav-btn" onclick="mostrarMateria('biologia')">Biología</button>
+    <button class="nav-btn" onclick="mostrarMateria('quimica')">Química</button>
+    <button class="nav-btn" onclick="mostrarMateria('fisica')">Física</button>
+    <button class="nav-btn" onclick="mostrarMateria('espanol')">Español</button>
+    <button class="nav-btn" onclick="mostrarMateria('civica')">Cívica</button>
+    <button class="nav-btn" onclick="mostrarMateria('sociales')">Estudios Sociales</button>
+    <button class="nav-btn" onclick="mostrarMateria('matematicas')">Matemáticas</button>
+    <button class="nav-btn" onclick="mostrarMateria('ingles')">Inglés</button>
+    <button class="nav-btn" onclick="mostrarMateria('portugues')">Portugués</button>
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <p>© 2025 M.A.I College | Creado por Valentina Amaya, Mariel Perez y Fabricio Rivera</p>
+  </footer>
+
+  <script>
+    // === BASE DE DATOS (equivalente a base.js) ===
+    let baseDatos = {
+      materias: {
+        biologia: [],
+        quimica: [],
+        fisica: [],
+        espaol: [],
+        civica: [],
+        sociales: [],
+        matematicas: [],
+        ingles: [],
+        portugues: []
+      }
+    };
+
+    // Funciones de base.js
+    function obtenerArchivos(materia) {
+      return baseDatos.materias[materia] || [];
+    }
+
+    function agregarArchivo(materia, archivoData) {
+      if (!baseDatos.materias[materia]) {
+        baseDatos.materias[materia] = [];
+      }
+      baseDatos.materias[materia].push(archivoData);
+      guardarBase();
+    }
+
+    function guardarBase() {
+      // En memoria - los datos persisten durante la sesión
+      console.log("Base de datos actualizada", baseDatos);
+    }
+
+    // === FUNCIONES DE MATERIAS (materias.js) ===
+    
+    // --- Mostrar archivos de cada materia ---
+    function mostrarMateria(materia) {
+      const contenedor = document.getElementById("contenido");
+      contenedor.innerHTML = `
+        <div class="card">
+          <h2>${materia.charAt(0).toUpperCase() + materia.slice(1)}</h2>
+          <div id="archivos-lista"></div>
+
+          <div class="agregar-archivo">
+            <input type="file" id="inputArchivo">
+            <button onclick="guardarArchivo('${materia}')">✅ Agregar Archivo</button>
+          </div>
+        </div>
+      `;
+
+      // Mostrar archivos guardados
+      renderizarArchivos(materia);
+    }
+
+    // --- Renderizar lista de archivos ---
+    function renderizarArchivos(materia) {
+      const lista = document.getElementById("archivos-lista");
+      const archivos = obtenerArchivos(materia);
+
+      if (archivos.length === 0) {
+        lista.innerHTML = "<p>No hay archivos guardados para esta materia.</p>";
+        return;
+      }
+
+      lista.innerHTML = "<ul>" + archivos.map((archivo, i) => `
+        <li>
+          <a href="${archivo.data}" download="${archivo.nombre}">📄 ${archivo.nombre}</a>
+          <button onclick="eliminarArchivo('${materia}', '${archivo.nombre}')">❌</button>
+        </li>
+      `).join("") + "</ul>";
+    }
+
+    // --- Guardar un archivo nuevo ---
+    function guardarArchivo(materia) {
+      const input = document.getElementById("inputArchivo");
+      const file = input.files[0];
+
+      if (!file) {
+        alert("Selecciona un archivo para subir");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const archivoData = {
+          nombre: file.name,
+          data: e.target.result  // Base64 del archivo
+        };
+
+        agregarArchivo(materia, archivoData);
+        renderizarArchivos(materia);
+        input.value = ""; // Limpiar input
+      };
+
+      reader.readAsDataURL(file); // Convertir a Base64
+    }
+
+    // --- Eliminar archivo ---
+    function eliminarArchivo(materia, archivoNombre) {
+      if (confirm(`¿Seguro que quieres eliminar "${archivoNombre}" de ${materia}?`)) {
+        baseDatos.materias[materia] = baseDatos.materias[materia].filter(a => a.nombre !== archivoNombre);
+        guardarBase();
+        renderizarArchivos(materia);
+      }
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>M.A.I College Consultas</title>
+  <link rel="stylesheet" href="consultas.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>M.A.I College Consultas</h1>
+    <div class="botones">
+      <button class="btn-ai" id="btn-ai">M.A.I College AI</button>
+      <a href="inicio.html" class="btn-inicio">Ir a Inicio</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="form-section card">
+      <h3>Reservar una consulta</h3>
+
+      <label for="consulta">1) Seleccione la consulta</label>
+      <select id="consulta"></select>
+
+      <label for="profesor">2) Seleccione el profesor</label>
+      <select id="profesor"></select>
+
+      <div id="info-resumen" class="small-muted"></div>
+    </section>
+
+    <section id="bandeja" class="card">
+      <h3>Horario semanal (7:00 — 17:00)</h3>
+      <div id="schedule-controls">
+        <button class="nav-btn" id="mostrar-todo">Mostrar semana</button>
+        <button class="nav-btn" id="limpiar-reservas">Limpiar mis reservas</button>
+      </div>
+
+      <div id="schedule-wrapper"></div>
+      <p class="nota small-muted">Haz clic en una casilla libre para reservarla. Las casillas ya reservadas aparecen en rojo.</p>
+    </section>
+  </main>
+
+  <footer class="small-muted" style="margin:20px 0;">Sistema de reservas de consultas — datos guardados localmente</footer>
+
+  <footer class="footer">
+    <p>© 2025 M.A.I College | Creado por Valentina Amaya, Mariel Perez y Fabricio Rivera</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="consultas.js"></script>
+  <script src="//code.tidio.co/pdbmoml13oibf61gutgerip3dwuww7pb.js" async></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const botonChat = document.getElementById("btn-ai");
+
+      // Ocultar el widget al inicio
+      function ocultarWidget() {
+        if (window.tidioChatApi) {
+          window.tidioChatApi.hide();
+        } else {
+          setTimeout(ocultarWidget, 500);
+        }
+      }
+      ocultarWidget();
+
+      // Mostrar el chat al hacer clic en el botón
+      botonChat.addEventListener("click", function () {
+        if (window.tidioChatApi) {
+          window.tidioChatApi.show();
+          window.tidioChatApi.open();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
