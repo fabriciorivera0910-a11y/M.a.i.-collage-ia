@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.A.I College Mensajes</title>
+    <link rel="stylesheet" href="mensajes.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>M.A.I College Mensajes</h1>
+        <div class="botones">
+            <button class="btn-ai">M.A.I College AI</button>
+            <a href="inicio.html" class="btn-inicio">Ir a Inicio</a>
+        </div>
+    </header>
+
+    <!-- Navegación de secciones -->
+    <div class="nav-container">
+        <button class="nav-btn" onclick="mostrarSeccion('redactar')">Redactar Mensaje</button>
+        <button class="nav-btn" onclick="mostrarSeccion('bandeja')">Bandeja</button>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <!-- Redactar mensaje -->
+        <div class="card" id="redactar">
+            <h3>Redactar Mensaje</h3>
+            <input type="text" id="usuarioDestino" placeholder="Nombre del usuario" />
+            <textarea id="mensajeTexto" placeholder="Escribe tu mensaje aquí..." rows="4"></textarea>
+            <button class="nav-btn" onclick="enviarMensaje()">Enviar</button>
+        </div>
+
+        <!-- Bandeja de mensajes -->
+        <div class="card" id="bandeja" style="display:none;">
+            <h3>Bandeja de Mensajes</h3>
+            <div id="mensajesRecibidos">
+                <p>No hay mensajes aún.</p>
+            </div>
+            <button class="nav-btn" onclick="mostrarSeccion('redactar')">Redactar Nuevo</button>
+        </div>
+    </div>
+
+    <script src="mensajes.js"></script>
+    <footer class="footer">
+    <p>© 2025 M.A.I College | Creado por Valentina Amaya, Mariel Perez y Fabricio Rivera</p>
+    </footer>
+</body>
+</html>

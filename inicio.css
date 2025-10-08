@@ -1,0 +1,173 @@
+/*  Estilos generales  */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #004e64, #00a5cf, #25a18e);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/*  Encabezado  */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 15px 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Contenedor de botones dentro del header */
+.header .botones {
+  display: flex;
+  gap: 15px; /* Espacio entre los botones */
+}
+
+/*  Botón AI dentro del header  */
+.btn-ai {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #00a5cf;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ai svg {
+  fill: #fff;
+}
+
+.btn-ai:hover {
+  background: #25a18e;
+  transform: scale(1.05);
+}
+
+/* Botón de enlace en el header */
+.btn-inicio {
+  display: inline-block;
+  text-decoration: none;
+  background: #00a5cf;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-inicio:hover {
+  background: #25a18e;
+  transform: scale(1.05);
+}
+
+/*  Contenedor principal de tarjetas  */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 40px;
+  justify-items: center;
+}
+
+/*  Tarjetas  */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Contenido de las tarjetas */
+.card .content .title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.card .content .description {
+  font-size: 0.95rem;
+  color: #e0f7fa;
+  margin-bottom: 15px;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 15px 30px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+  margin-top: 40px;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #e0f7fa;
+}
+
+.footer a {
+  color: #00a5cf;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #25a18e;
+}
+
+/*  Responsive: Pantallas pequeñas  */
+@media screen and (max-width: 1024px) {
+  .parent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .parent {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .btn-ai {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header .botones {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+}
+

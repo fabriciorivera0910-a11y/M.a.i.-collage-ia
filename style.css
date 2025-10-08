@@ -1,0 +1,89 @@
+/*  Estilos generales  */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #004e64, #00a5cf, #25a18e);
+  color: #fff;
+  min-height: 100vh;
+
+  /* Centrar contenido vertical y horizontal */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Fondo más dinámico */
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Animación del fondo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Encabezados */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+/* Párrafos */
+p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+/* Formularios */
+form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #00a5cf;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #25a18e;
+  transform: scale(1.05);
+}
+
+/* Enlaces */
+a {
+  color: #e0f7fa;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #fff;
+}
+
+ 
